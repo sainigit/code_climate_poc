@@ -1,0 +1,21 @@
+#machine:
+#  node:
+#    version: 0.11.8
+#    
+#test:
+#  override:
+#    - mocha
+#    
+#deployment:
+#  dockerhub:
+#     branch: master
+#     commands:
+#       - $DOCKERTRIGGER
+machine:
+  services:
+    - docker
+
+test:
+  post:
+    - docker build -t piyushcoolkarni/angularnodedocker2frontend:$COMMIT .
+
